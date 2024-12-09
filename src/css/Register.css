@@ -1,0 +1,193 @@
+.signup {
+  min-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-form {
+  width: 50%;
+  padding:1%;
+}
+
+.right-side {
+  width: 50%;
+}
+
+.signup-content {
+  width: 70%;
+  background-color: #ffffff;
+  padding: 2%;
+  /* box-shadow: 0px 41px 31px -46px #cccccc; */
+  box-shadow: -5px 0px 10px rgba(204, 204, 204, 0.3),
+    /* left Shadow */
+    5px 0 10px rgba(204, 204, 204, 0.3),
+    /* Right Shadow */
+    0 5px 10px rgba(204, 204, 204, 0.3);
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.form-submit {
+  padding: 10px 25px;
+  outline: none;
+  border: none;
+  color: white;
+  background-color: #6c63ff;
+}
+
+.form-submit:hover {
+  background-color: #271cf3;
+}
+
+
+
+.login-image-link {
+  font-family: "Poppins", sans-serif;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.login-image-link:hover {
+  text-decoration: none;
+  color: #0059ff;
+}
+
+#toastBox {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.toast-container {
+  width: 300px;
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  font-weight: 500;
+  margin: 15px 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  font-size: 15px;
+  padding-left: 15px;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  transform: translateX(120%);
+  animation: moveleft 0.5s linear forwards;
+}
+
+@keyframes moveleft {
+  100% {
+    transform: translateX(0)
+  }
+}
+
+.toast-container .check::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  animation: anim 4s linear forwards;
+  background-color: #004707;
+}
+
+.toast-container .exclamation::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  animation: anim 4s linear forwards;
+  background-color: #e1a525;
+}
+
+.toast-container .error::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  animation: anim 4s linear forwards;
+  background-color: #bd1515;
+}
+
+@keyframes anim {
+  100% {
+    width: 0;
+  }
+}
+
+.check,
+.exclamation,
+.error {
+  padding-right: 10px;
+}
+
+.exclamation {
+  color: #e1a525;
+  font-size: 21px;
+}
+
+.error {
+  color: #bd1515;
+  font-size: 21px;
+}
+
+.check {
+  color: #004707;
+  font-size: 21px;
+}
+
+#company_name:focus::placeholder {
+  color: black;
+}
+
+#contact_person:focus::placeholder {
+  color: black;
+}
+
+#mobile_number:focus::placeholder {
+  color: black;
+}
+
+#email:focus::placeholder {
+  color: black;
+}
+
+#gst_number:focus::placeholder {
+  color: black;
+}
+
+
+#company_name,
+#contact_person,
+#mobile_number,
+#email,
+#gst_number {
+  margin-left: 10px;
+  outline: none;
+  border: none;
+  width: 85%;
+  font-size: 15px;
+}
+
+.form-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: larger;
+}

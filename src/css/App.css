@@ -1,0 +1,41 @@
+.bord{
+    @apply border-x border-y border-sky-400 border-solid
+}
+.app{
+    height: 100vh;
+    display: flex;
+}
+
+.sidebar.close{
+    width:88px;
+}
+.sidebar.close li{
+    padding-left:0;
+    justify-content:center !important;
+    align-items: center;
+}
+.custom-dialog{
+    max-width: 75% !important;
+}
+
+
+.sidebar.close .text{
+   display:none;
+}
+@media (max-width:768px) {
+.sidebar.close{
+  width:100% !important;
+}
+.sidebar.close .text{
+    display: block;
+}
+}
+
+ .active{
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events:initial !important;
+    
+}
+    

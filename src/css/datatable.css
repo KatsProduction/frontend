@@ -1,0 +1,21 @@
+/* .data-table-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .table-container {
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+  }
+   */
+  /* .MuiDataGrid-root .MuiDataGrid-columnHeaders {
+    position: sticky;
+    top: 0;
+    background-color: #847bff;
+    z-index: 1;
+  } */
+  
+   .MuiDataGrid-root .MuiDataGrid-virtualScroller {
+    max-height: 330px;
+  } 

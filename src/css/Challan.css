@@ -1,0 +1,33 @@
+.bord{
+    @apply border-x-4 border-y-4 border-red-900 border-solid
+}
+.table-sortable th{
+    cursor: pointer;
+ }
+ /* table th, table td {
+   width: 150px; /* Set a fixed width for each column 
+ } */
+ .table-sortable .th-sort-asc .carrat-asc{
+    /* content:'\25b4';
+    font-size: 20px;
+    color:white; */
+    display: inline-block;
+
+ }
+/* 
+ .table-sortable .th-sort-desc::after{
+    content:'\25be';
+    font-size: 20px;
+    color:white; 
+   
+ } */
+  
+ .table-sortable .th-sort-desc .carrat-desc{
+   /* opacity: 1; */
+   display:inline-block;
+ }
+
+
+ /* .table-sortable .th-sort-asc::after, .table-sortable .th-sort-desc::after{
+    margin-left: 5px;
+ } */

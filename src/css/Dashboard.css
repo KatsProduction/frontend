@@ -1,0 +1,7 @@
+.dashboard-pannel{
+    flex-grow: 2;
+}
+.bord{
+    @apply border-x border-y border-purple-900 border-solid
+}
+

@@ -1,0 +1,12 @@
+.bord{
+    @apply border-2 border-red-600 border-solid
+}
+
+.header-title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 2px;
+  }
+
+ 

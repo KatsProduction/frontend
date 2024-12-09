@@ -1,0 +1,28 @@
+.ewaybill-pannel{
+    flex-grow:2;   
+    width: 82%;
+}
+#logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    width:35px;
+    height:35px;
+    mix-blend-mode: multiply;
+  }
+.bord{
+    @apply border-x-2 border-y-2 border-red-900 border-solid
+}
+
+.table-sortable th{
+    cursor: pointer;
+ }
+.table-sortable .th-sort-desc .carrat-desc{
+    display:inline-block;
+  } 
+  
+.table-sortable .th-sort-asc .carrat-asc{
+    display: inline-block;
+ }

@@ -1,0 +1,18 @@
+.fastag-pannel{
+    flex-grow:2;   
+    width:82%;
+}
+.bord{
+    @apply border-x-2 border-y-2 border-red-900 border-solid
+}
+
+.table-sortable th{
+    cursor: pointer;
+ }
+.table-sortable .th-sort-desc .carrat-desc{
+    display:inline-block;
+  } 
+  
+.table-sortable .th-sort-asc .carrat-asc{
+    display: inline-block;
+ }

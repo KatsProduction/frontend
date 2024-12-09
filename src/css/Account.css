@@ -1,0 +1,15 @@
+.chart-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .chart-wrapper {
+    position: relative;
+  }
+  
+  .custom-legend {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }

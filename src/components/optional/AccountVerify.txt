@@ -1,0 +1,61 @@
+import React from 'react'
+import { LineChart } from '@mui/x-charts/LineChart';
+import { Card, CardContent, Typography, FormControlLabel, Checkbox, Box } from '@mui/material';
+
+// const uData = [2400, 1398, 9800, 3908, 4800, 3800, 4300,4000, 3000, 2000, 2780, 1890];
+// const xLabels = [
+//     'Jan',
+//     'Feb',
+//     'Mar',
+//     'Apr',
+//     'May',
+//     'Jun',
+//     'Jul',
+//     'Aug',
+//     'Sep',
+//     'Oct',
+//     'Nov',
+//     'Dec'
+// ];
+
+
+export default function AccountVerify({fastTagData}) {
+    const uData = fastTagData.totalAmountArray;
+    const xLabels =  fastTagData.monthYearArray;
+    
+  // Check if fastTagData is defined and contains valid data
+  if (!fastTagData || !fastTagData.totalAmountArray || !fastTagData.monthYearArray) {
+    return null;  // Do not render anything if there's no valid data
+  }
+    return (
+        <>
+            {/* <Card sx={{ padding: '1%', boxShadow: 2, borderRadius: 2, maxWidth: 800, width: 560, margin: 'auto', flexBasis: '45%' }}> */}
+            <Card className='min-w-[300px] p-2 bg-white shadow-lg rounded-lg mt-6' >
+                <CardContent>
+                    <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', marginBottom: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                     FasTag
+                    </Typography>
+                    <Box sx={{ height: '250px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <LineChart
+                            width={500}
+                            height={300}
+                            series={[
+                                // { data: pData, label: '2024' },
+                                { data: uData, label: 'Monthly Expenditure' },
+                            ]}
+                            xAxis={[{ scaleType: 'band', data: xLabels,disableLine:true,disableTicks:true }]}
+                            yAxis={[{disableLine:true,disableTicks:true }]}
+                       sx={{marginTop:'2%'}} />
+
+
+
+                    </Box>
+                </CardContent>
+            </Card>
+
+
+
+        </>
+
+    )
+}

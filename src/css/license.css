@@ -1,0 +1,81 @@
+
+
+
+.first-row:nth-child(odd) {
+    background-color: rgb(104, 157, 241);
+}
+
+.second-row{
+    background-color: white;
+}
+
+.first-col:nth-child(1) {
+    width: 20%;
+}
+
+.second-col:nth-child(2) {
+    width: 80%;
+}
+
+
+@media print {
+    /* Hide all elements except for #license-viewer */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Show only #license-viewer and its content */
+    #license-viewer,
+    #license-viewer * {
+        visibility: visible;
+    }
+
+
+    /* Ensure #license-viewer takes up the full width of the printed page */
+    #license-viewer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    #prtbtn {
+        display: none !important;
+    }
+
+
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: sans-serif;
+        font-weight: 600 !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        letter-spacing: 1.5px !important;
+        margin: 0 !important;
+    }
+    
+    .watermark {
+      display: block !important; 
+      visibility: visible !important;
+    }
+
+  }
+
+  .watermark {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%) rotate(-30deg); /* Slant the watermark */
+    font-size: 5rem; /* Adjust size as necessary */
+    color: rgba(0, 0, 0, 0.1); /* Light color for watermark */
+    pointer-events: none; /* Prevent interaction with the watermark */
+    z-index: 2; /* Place it behind the content */
+    white-space: nowrap; /* Prevent line breaks */
+    text-align: center; /* Center text */
+  }
