@@ -76,9 +76,9 @@ export default function Truckverify({ dbName }) {
             if (output.hasOwnProperty('msg')) {
                        // Filter out successfully inserted vehicle from excelData
                        setExcelData((prevData) => {
-                           console.log(prevData);
-                           prevData.filter((_, i) => {console.log(i);console.log(index);i !== index});
-                    console.log(prevData.filter((_, i) => i !== index));
+                        //    console.log(prevData);
+                        //    prevData.filter((_, i) => {console.log(i);console.log(index);i !== index});
+                    // console.log(prevData.filter((_, i) => i !== index));
                     return prevData.filter((_, i) => i !== index)
                 });
                 // alert(`Vehicle No ${vehicle_number} is inserted`);
