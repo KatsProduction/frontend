@@ -35,23 +35,27 @@ export default function Challan() {
     setExcelData(data);
   };
 
-
-  async function sendRequest(vehicle_number) {
+  // Reusable function to send requests for each vehicle number
+  const sendRequest = async (vehicle_number,index) => {
     try {
-
-      const response1 = await axios({
+      const response = await axios({
         method: 'post',
         url: `${import.meta.env.VITE_APP_BASE_URL}/challan/search`,
         withCredentials: true,
         data: { Vehicle_no: vehicle_number }
       });
-      let output = response1.data;
-      console.log(output);
 
-
+      const output = response.data;
       if (output.hasOwnProperty('out')) {
-        alert(`Vehicle No ${vehicle_number} is inserted`);
-        return 1;
+        // Filter out successfully inserted vehicle from excelData
+        setExcelData((prevData) => {
+          console.log(prevData);
+          prevData.filter((_, i) => { console.log(i); console.log(index); i !== index });
+          console.log(prevData.filter((_, i) => i !== index));
+          return prevData.filter((_, i) => i !== index)
+        });
+        // alert(`Vehicle No ${vehicle_number} is inserted`);
+        return 1; // Return 1 for successful processing
       }
     } catch (error) {
       if (error.response.data.status == 401) {
@@ -65,7 +69,9 @@ export default function Challan() {
       }
       throw new Error(`Error processing Vehicle ${vehicle_number}`);
     }
-  }
+  };
+
+
 
   // handle uploaded excel file
   const handleUploadedFile = async (e) => {
@@ -74,25 +80,24 @@ export default function Challan() {
     setIsObj(false);
     setUploaded(true);
 
-    // try {
-
-
     if (!excelData || excelData.length === 0) {
       alert('No data available to process');
       return;
     }
+
     let count = 0;
 
     for (let i = 0; i < excelData.length; i++) {
       try {
-        const received_count = await sendRequest(excelData[i]);
+        const received_count = await sendRequest(excelData[i],0);
         count += received_count;  // Increment count for each successful request
+        // alert(count);
+
       } catch (error) {
         console.log(error);
         alert(`${error.message}`);
       }
     }
-
 
     if (count === excelData.length) {
       alert('All data fetched successfully');
@@ -102,12 +107,8 @@ export default function Challan() {
       alert('No data fetched successfully');
     }
 
-
-    setExcelData([]); // Clear Excel data after processing
     setUploaded(false);
-
-  }
-
+  };
 
 
 

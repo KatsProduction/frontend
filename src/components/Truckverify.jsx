@@ -66,7 +66,7 @@ export default function Truckverify({ dbName }) {
     };
 
     // Reusable function to send requests for each vehicle number
-    const sendRequest = async (vehicle_number) => {
+    const sendRequest = async (vehicle_number,index) => {
         try {
             const response = await axios.post(`${import.meta.env.VITE_APP_BASE_URL}/truckverify/dbcheck`, {
                 Vehicle_no: vehicle_number
@@ -74,10 +74,18 @@ export default function Truckverify({ dbName }) {
 
             const output = response.data;
             if (output.hasOwnProperty('msg')) {
+                       // Filter out successfully inserted vehicle from excelData
+                       setExcelData((prevData) => {
+                           console.log(prevData);
+                           prevData.filter((_, i) => {console.log(i);console.log(index);i !== index});
+                    console.log(prevData.filter((_, i) => i !== index));
+                    return prevData.filter((_, i) => i !== index)
+                });
                 // alert(`Vehicle No ${vehicle_number} is inserted`);
                 return 1; // Return 1 for successful processing
             }
         } catch (error) {
+            console.log(error);
             if (error.response.data.status == 401) {
                 alert('Session Expired');
             } else if (error.response.data.status == 500) {
@@ -90,70 +98,28 @@ export default function Truckverify({ dbName }) {
             throw new Error(`Error processing Vehicle ${vehicle_number}`);
         }
     };
-
-    // Handle uploaded Excel file and process data
-    // const handleUploadedFile = async (e) => {
-    //     e.preventDefault();
-    //     setIsArray(false);
-    //     setIsObj(false);
-    //     setUploaded(true);
-
-    //     if (!excelData || excelData.length === 0) {
-    //         alert('No data available to process');
-    //         return;
-    //     }
-
-
-    //     let count = 0;
-    //     for (let i = 0; i < excelData.length; i++) {
-    //         try {
-    //             const received_count = await sendRequest(excelData[i]);
-    //             count += received_count;  // Increment count for each successful request
-    //         } catch (error) {
-    //             console.log(error);
-    //             alert(`${error.message}`);
-    //         }
-    //     }
-
-    //     if (count === excelData.length) {
-    //         alert('All data fetched successfully');
-    //     } else if (count > 0) {
-    //         alert('Partial data fetched successfully');
-    //     } else {
-    //         alert('No data fetched successfully');
-    //     }
-
-    //     setExcelData([]); // Clear Excel data after processing
-    //     setUploaded(false);
-
-    // };
-
-
+    
+    
+    
     const handleUploadedFile = async (e) => {
         e.preventDefault();
         setIsArray(false);
         setIsObj(false);
         setUploaded(true);
-    
+        
         if (!excelData || excelData.length === 0) {
             alert('No data available to process');
             return;
         }
-    
+        
         let count = 0;
-        const updatedExcelData = [...excelData];  // Clone the data to modify
         for (let i = 0; i < excelData.length; i++) {
             try {
-                const received_count = await sendRequest(excelData[i]);
+                const received_count = await sendRequest(excelData[i],0);
                 count += received_count;  // Increment count for each successful request
+                // alert(count);
+                //    console.log(excelData);
     
-                // Remove the processed vehicle number from the list
-                const indexToRemove = updatedExcelData.indexOf(excelData[i]);
-                if (indexToRemove > -1) {
-                    updatedExcelData.splice(indexToRemove, 1);
-                }
-    
-                setExcelData(updatedExcelData);  // Update state with the new list
             } catch (error) {
                 console.log(error);
                 alert(`${error.message}`);
@@ -269,6 +235,7 @@ export default function Truckverify({ dbName }) {
                                 <span colSpan={18} className='text-left'>{item[0]}</span>
                             </h1>
                         ))}
+                 
                     </div>
                 ) : null}
             </div>
